@@ -22,7 +22,7 @@
         job_name AS jobName,
         department_id AS departmentId,
         department_name AS departmentName
-      FROM operator_job
+      FROM job
       WHERE job_status = 0
       LIMIT #{start}, #{pageSize};
 
@@ -30,7 +30,7 @@
     <select id="selectCount" resultType="java.lang.Long">
       select count(1)
       FROM operator_job
-      WHERE job_status = 0
+      WHERE job = 0
     </select>
     <select id="getJob" resultType="com.lb.lbservice.model.JobModel">
       SELECT
@@ -45,7 +45,7 @@
         job_need_count AS jobNeedCount,
         job_duty AS jobDuty,
         job_requirement AS jobRequirement
-      FROM operator_job
+      FROM job
       WHERE job_status = 0
       AND id = #{id}
 
