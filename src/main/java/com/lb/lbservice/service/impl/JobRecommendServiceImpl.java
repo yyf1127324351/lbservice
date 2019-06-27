@@ -3,6 +3,7 @@ package com.lb.lbservice.service.impl;
 import com.lb.lbservice.dao.JobRecommendMapper;
 import com.lb.lbservice.dto.JobRecommendAndInfo;
 import com.lb.lbservice.model.JobRecommendModel;
+import com.lb.lbservice.model.RecommendDetailModel;
 import com.lb.lbservice.service.JobRecommendService;
 import com.lb.lbservice.service.MailService;
 import com.lb.lbservice.utils.BaseResponse;
@@ -37,6 +38,17 @@ public class JobRecommendServiceImpl implements JobRecommendService {
         return new BaseResponse().success();
 
     }
+
+    @Override
+    public RecommendDetailModel getRecommendDetail(RecommendDetailModel recommendDetailModel) {
+        return jobRecommendMapper.getRecommendDetail(recommendDetailModel);
+    }
+
+    @Override
+    public void updateJobRecommend(List<JobRecommendModel> list) {
+        jobRecommendMapper.updateJobRecommend(list);
+    }
+
     @Override
     public Boolean updateJobRecommendStatus(HashMap<String,String> map)
     {
@@ -55,7 +67,7 @@ public class JobRecommendServiceImpl implements JobRecommendService {
         StringBuilder p=new StringBuilder();
         p.append("<p>尊敬的&nbsp;"+ jobRecommendModel.getRecommendedName() +":</p>");
         p.append("<p>");
-        p.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感谢您推荐/应聘苏州乐贝网络科技的【"+jobRecommendModel.getJobName()+"】职位，请点击<a>www.baidu.com</a>尽快上穿简历。感谢您的参与！");
+        p.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感谢您推荐/应聘苏州乐贝网络科技的【"+jobRecommendModel.getJobName()+"】职位，请点击&nbsp;<a href='http://www.baidu.com'>完善简历</a>&nbsp;尽快上传简历。感谢您的参与！");
         p.append("</p>");
         p.append("<p>");
         p.append("此邮件由系统直接发出，请勿回复此邮件，谢谢！");

@@ -1,7 +1,7 @@
 package com.lb.lbservice.model;
 
 public class RecommendDetailModel {
-    private Long id;
+    private Long jobRecommendInfoId;
     private Integer jobId;
     private String jobName;//岗位名称
     private String departmentName; //部门名称
@@ -11,12 +11,12 @@ public class RecommendDetailModel {
     private String refereeName;//推荐人姓名
     private String recommendedName;//被推荐人姓名
 
-    public Long getId() {
-        return id;
+    public Long getJobRecommendInfoId() {
+        return jobRecommendInfoId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setJobRecommendInfoId(Long jobRecommendInfoId) {
+        this.jobRecommendInfoId = jobRecommendInfoId;
     }
 
     public Integer getJobId() {

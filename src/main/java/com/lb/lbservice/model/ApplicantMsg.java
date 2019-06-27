@@ -2,7 +2,7 @@ package com.lb.lbservice.model;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-public class ApplicantMsg extends BaseModel{
+public class ApplicantMsg{
 	private String ids;//id集合
     /*应聘者管理表*/
     private String id;
@@ -121,6 +121,16 @@ public class ApplicantMsg extends BaseModel{
     private String birth;// 出生年月
     
     private String year;//年度
+
+	private Integer valid;
+
+	public Integer getValid() {
+		return valid;
+	}
+
+	public void setValid(Integer valid) {
+		this.valid = valid;
+	}
 
 	public String getCreaterId() {
 		return createrId;

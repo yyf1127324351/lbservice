@@ -17,9 +17,10 @@ public class JobModel {
     private BigDecimal jobSalaryMax;//薪资上限
     private String jobCity;//工作城市
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Integer jobNeedCount;//岗位需求人数
+    private String jobNeedCount;//岗位需求人数
     private String publishDate;//岗位发布时间
     private Integer positionId;//岗位ID  对应zhaopin_positionMsg 表id
+    private String workYear;
 
 
     public Integer getId() {
@@ -94,11 +95,11 @@ public class JobModel {
         this.jobCity = jobCity;
     }
 
-    public Integer getJobNeedCount() {
+    public String getJobNeedCount() {
         return jobNeedCount;
     }
 
-    public void setJobNeedCount(Integer jobNeedCount) {
+    public void setJobNeedCount(String jobNeedCount) {
         this.jobNeedCount = jobNeedCount;
     }
 
@@ -116,5 +117,13 @@ public class JobModel {
 
     public void setPositionId(Integer positionId) {
         this.positionId = positionId;
+    }
+
+    public String getWorkYear() {
+        return workYear;
+    }
+
+    public void setWorkYear(String workYear) {
+        this.workYear = workYear;
     }
 }

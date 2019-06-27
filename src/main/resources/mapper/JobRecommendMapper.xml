@@ -39,8 +39,25 @@
     select j.position_id from job_recommend_info r left join job  j on r.job_id=j.id
      where r.id=#{id}
   </select>
+    <select id="getRecommendDetail" resultType="com.lb.lbservice.model.RecommendDetailModel">
+      SELECT
+        jri.id AS jobRecommendInfoId,
+        jri.referee_name AS refereeName,
+        jri.recommended_name AS recommendedName,
+        j.id AS jobId,
+        j.job_name AS jobName,
+        j.department_name AS departmentName,
+        job_duty AS jobDuty,
+        job_requirement AS jobRequirement,
+        j.job_city AS jobCity
+      FROM job_recommend_info jri
+      LEFT JOIN job j ON jri.job_id = j.id
+      WHERE jri.id = #{jobRecommendInfoId}
 
-  <update id="updateJobRecommendStatus" parameterType="map">
+
+    </select>
+
+    <update id="updateJobRecommendStatus" parameterType="map">
     update job_recommend_info set status=#{status} where id in (#{id});
   </update>
 
@@ -48,4 +65,14 @@
     select * from job_recommend_info r left join applicant_msg s on r.id=s.apply_id
    where r.`status`=1 limt 20;
   </select>
+
+  <update id="updateJobRecommend">
+    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+      UPDATE job_recommend_info
+      <set>
+        status = ${item.status}
+      </set>
+      where id = ${item.id}
+    </foreach>
+  </update>
 </mapper>

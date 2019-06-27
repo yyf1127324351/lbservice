@@ -1,12 +1,17 @@
 package com.lb.lbservice.controller;
 
 import com.lb.lbservice.dto.JobRecommendAndInfo;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.lb.lbservice.model.ApplicantMsg;
 import com.lb.lbservice.model.JobRecommendModel;
+import com.lb.lbservice.model.RecommendDetailModel;
 import com.lb.lbservice.service.JobRecommendService;
 import com.lb.lbservice.utils.BaseResponse;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +27,9 @@ import java.util.List;
 @RequestMapping("api/v1/jobRecommend")
 public class JobRecommendController {
     private static final Logger logger = Logger.getLogger(JobRecommendController.class);
+
+    @Value("${tokens}")
+    private String tokens;
 
     @Autowired
     private JobRecommendService jobRecommendService;
@@ -44,16 +52,30 @@ public class JobRecommendController {
     /**
      *  获取推荐岗位，及推荐详情
      * */
-//    @PostMapping("getRecommendDetail")
-//    public BaseResponse getRecommendDetail(){
-//        try {
-//            return jobRecommendService.getRecommendDetail(jobRecommendModel);
-//        }catch (Exception e){
-//            logger.error("api/v1/jobRecommend/addJobRecommend-exception:",e);
-//            return new BaseResponse().error();
-//        }
-//    }
-
+    @PostMapping("getRecommendDetail")
+    public BaseResponse getRecommendDetail(@RequestBody RecommendDetailModel recommendDetailModel){
+        try {
+            RecommendDetailModel model = jobRecommendService.getRecommendDetail(recommendDetailModel);
+            return new BaseResponse().success(model);
+        }catch (Exception e){
+            logger.error("api/v1/jobRecommend/getRecommendDetail-exception:",e);
+            return new BaseResponse().error();
+        }
+    }
+    /**
+     *  获取推荐岗位，及推荐详情
+     * */
+    @PostMapping("updateJobRecommend")
+    public void updateJobRecommend(@RequestBody JSONObject jsonObject){
+        String token = jsonObject.getString("token");
+        if (StringUtils.isNotBlank(token)){
+            if (token.equals(tokens)){
+                JSONArray jsonArray = jsonObject.getJSONArray("data");
+                List<JobRecommendModel> list = JSONObject.parseArray(jsonArray.toJSONString(), JobRecommendModel.class);
+                jobRecommendService.updateJobRecommend(list);
+            }
+        }
+    }
 
 
     @RequestMapping("getHrData")
