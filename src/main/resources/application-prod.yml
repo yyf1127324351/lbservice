@@ -6,5 +6,14 @@ spring:
       username: hr
       password: E1opTTYV8QZ9U
       type: com.alibaba.druid.pool.DruidDataSource
+#简历解析账号密码
 jianlijiexi_username: dTEwMDIyMQ==
 jianlijiexi_pwd: c3psYjIwMTkwNjE0
+#ftp 配置
+fileUrl: 192.168.2.41:20
+ftpIp: 192.168.2.41
+ftpPort: 21
+ftpUserName: up
+ftpPassword: 123456
+
+configEnv: online

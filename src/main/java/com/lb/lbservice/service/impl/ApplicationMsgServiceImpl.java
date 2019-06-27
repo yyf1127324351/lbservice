@@ -1,19 +1,27 @@
 package com.lb.lbservice.service.impl;
 
+import com.lb.lbservice.common.FtpUtil;
 import com.lb.lbservice.controller.JobController;
 import com.lb.lbservice.dao.JobMapper;
+import com.lb.lbservice.dao.JobRecommendMapper;
 import com.lb.lbservice.model.*;
 import com.lb.lbservice.service.ApplicationMsgService;
+import com.lb.lbservice.utils.BaseResponse;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+import javax.swing.text.DateFormatter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -25,6 +33,9 @@ import java.util.Map;
 @Service
 public class ApplicationMsgServiceImpl implements ApplicationMsgService {
 
+    @Autowired
+    JobRecommendMapper jobRecommendMapper;
+
     @Value("${jianlijiexi_username}")
     private String user_name;
 
@@ -32,8 +43,36 @@ public class ApplicationMsgServiceImpl implements ApplicationMsgService {
     private String password;
     private static final Logger logger = Logger.getLogger(ApplicationMsgServiceImpl.class);
     @Override
-    public void CreateApplicationMsg() {
+    public BaseResponse CreateApplicationMsg(ApplicantMsg input, Long applyId) {
+        BaseResponse baseResponse = new BaseResponse();
+        try {
+            Long positionId = GetPositionId(applyId);
+            if (positionId.equals(0)) {
+                baseResponse.error("推荐申请找不到");
+                return baseResponse;
+            }
+            input.setJob(positionId.toString());
+            String fileName = input.getResumeFile().getFileItem().getName();
+            byte[] content = input.getResumeFile().getBytes();
+            ApplicantMsg applicantMng = analysis(content, fileName, input.getJob(), applyId);
+            if (null == applicantMng) {
+                baseResponse.error("简历解析失败，请稍后重试!");
+                return baseResponse;
+            }
+            applicantMng.setResumeFile(input.getResumeFile());
+            uploadResume(applicantMng);//附件上传.
+        }
+        catch (Exception ex)
+        {
+            baseResponse.error();
+            logger.error(ex.toString());
+        }
+        return  baseResponse;
+    }
 
+    private Long GetPositionId(Long applyId)
+    {
+       return jobRecommendMapper.queryPositionIdByJobId(applyId);
     }
 
     /*
@@ -228,6 +267,23 @@ public class ApplicationMsgServiceImpl implements ApplicationMsgService {
     {
         BASE64Encoder encoder = new BASE64Encoder();
         return encoder.encode(bty);//返回Base64编码过的字节数组字符串
+    }
+
+
+    private void uploadResume(ApplicantMsg applicantMng) throws IOException {
+        CommonsMultipartFile file = applicantMng.getResumeFile();
+        SimpleDateFormat formatter=new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String time = formatter.format(new Date());
+        String filename = file.getOriginalFilename();
+        String newFileName = file.getOriginalFilename();
+        if (filename.lastIndexOf(".") > -1) {
+            newFileName = time + filename.substring(filename.lastIndexOf("."), filename.length());
+        }
+        String url = FtpUtil.ftpUploadFile(newFileName, file.getInputStream());
+        if (StringUtils.isNotBlank(url)) {
+            applicantMng.setFilename(file.getOriginalFilename());
+            applicantMng.setFileurl(url);
+        }
     }
 
 }

@@ -7,6 +7,17 @@ spring:
       username: root
       password: richardsun
       type: com.alibaba.druid.pool.DruidDataSource
+
+#简历解析账号密码
 jianlijiexi_username: dTEwMDA0OQ==
 jianlijiexi_pwd: dGVzdDAyMjY=
+
+#redis配置
+fileUrl: 192.168.2.41:20
+ftpIp: 192.168.2.41
+ftpPort: 21
+ftpUserName: up
+ftpPassword: 123456
+
+configEnv: dev
 

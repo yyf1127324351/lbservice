@@ -1,5 +1,6 @@
 package com.lb.lbservice.controller;
 
+import com.lb.lbservice.model.ApplicantMsg;
 import com.lb.lbservice.model.JobRecommendModel;
 import com.lb.lbservice.service.JobRecommendService;
 import com.lb.lbservice.utils.BaseResponse;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * 岗位推荐记录controller
@@ -35,4 +38,10 @@ public class JobRecommendController {
             return new BaseResponse().error();
         }
     }
+    @RequestMapping("getHrData")
+    public List<ApplicantMsg> getHrData()
+    {
+       return  null;
+    }
+
 }

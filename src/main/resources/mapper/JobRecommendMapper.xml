@@ -35,4 +35,12 @@
 
 
     </insert>
+  <select id="queryPositionIdByJobId" resultType="long" parameterType="long">
+    select j.position_id from job_recommend_info r left join job  j on r.job_id=j.id
+     where r.id=#{id}
+  </select>
+
+  <update id="updateJobRecommendStatus" parameterType="map">
+    update job_recommend_info set status=#{status} where id in (#{id});
+  </update>
 </mapper>
