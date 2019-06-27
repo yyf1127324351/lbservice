@@ -2,7 +2,7 @@ package com.lb.lbservice.model;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-public class ApplicantMsg extends BaseModel{
+public class ApplicantMsg{
 	private String ids;//id集合
     /*应聘者管理表*/
     private String id;
