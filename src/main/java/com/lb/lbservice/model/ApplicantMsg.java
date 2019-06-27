@@ -122,6 +122,16 @@ public class ApplicantMsg{
     
     private String year;//年度
 
+	private Integer valid;
+
+	public Integer getValid() {
+		return valid;
+	}
+
+	public void setValid(Integer valid) {
+		this.valid = valid;
+	}
+
 	public String getCreaterId() {
 		return createrId;
 	}

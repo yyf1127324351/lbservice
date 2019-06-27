@@ -31,36 +31,36 @@ public class Test {
 //        mailSender.send(message);
 //    }
 
-    @Autowired
-    MailService mailService;
-
-    @org.junit.Test
-    public void send() throws Exception {
-        String contentStr = sendResultlistHtml();
-        mailService.sendHtmlMail("1025550955@qq.com","【乐贝招聘】邀请您完善简历",contentStr);
-    }
-
-
-    public static String sendResultlistHtml(){
-        StringBuilder p=new StringBuilder();
-        p.append("<p>尊敬的推荐人/候选人:</p>");
-        p.append("<p>");
-        p.append("考核浮动总分："+111);
-        p.append("</p>");
-        p.append("<p>");
-        p.append("271总排序："+222);
-        p.append("</p>");
-        p.append("<p>");
-        p.append("绩效评语："+333);
-        p.append("</p>");
-        p.append("<p>");
-        p.append("感谢您为公司做出的贡献，请继续努力。");
-        p.append("</p>");
-        p.append("<p>");
-        p.append("备注：表中信息如有疑问，请联系您所在事业部的HR。");
-        p.append("</p>");
-
-        return p.toString();
-    }
+//    @Autowired
+//    MailService mailService;
+//
+//    @org.junit.Test
+//    public void send() throws Exception {
+//        String contentStr = sendResultlistHtml();
+//        mailService.sendHtmlMail("1025550955@qq.com","【乐贝招聘】邀请您完善简历",contentStr);
+//    }
+//
+//
+//    public static String sendResultlistHtml(){
+//        StringBuilder p=new StringBuilder();
+//        p.append("<p>尊敬的推荐人/候选人:</p>");
+//        p.append("<p>");
+//        p.append("考核浮动总分："+111);
+//        p.append("</p>");
+//        p.append("<p>");
+//        p.append("271总排序："+222);
+//        p.append("</p>");
+//        p.append("<p>");
+//        p.append("绩效评语："+333);
+//        p.append("</p>");
+//        p.append("<p>");
+//        p.append("感谢您为公司做出的贡献，请继续努力。");
+//        p.append("</p>");
+//        p.append("<p>");
+//        p.append("备注：表中信息如有疑问，请联系您所在事业部的HR。");
+//        p.append("</p>");
+//
+//        return p.toString();
+//    }
 
 }
