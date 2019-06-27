@@ -60,7 +60,7 @@ public class JobRecommendServiceImpl implements JobRecommendService {
         StringBuilder p=new StringBuilder();
         p.append("<p>尊敬的&nbsp;"+ jobRecommendModel.getRecommendedName() +":</p>");
         p.append("<p>");
-        p.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感谢您推荐/应聘苏州乐贝网络科技的【"+jobRecommendModel.getJobName()+"】职位，请点击<a>www.baidu.com</a>尽快上穿简历。感谢您的参与！");
+        p.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;感谢您推荐/应聘苏州乐贝网络科技的【"+jobRecommendModel.getJobName()+"】职位，请点击&nbsp;<a href='http://www.baidu.com'>完善简历</a>&nbsp;尽快上传简历。感谢您的参与！");
         p.append("</p>");
         p.append("<p>");
         p.append("此邮件由系统直接发出，请勿回复此邮件，谢谢！");

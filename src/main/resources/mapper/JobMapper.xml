@@ -13,6 +13,7 @@
         job_salary_max AS jobSalaryMax,
         job_city AS jobCity,
         work_year AS workYear,
+        job_need_count AS jobNeedCount,
         publish_date AS publishDate
       FROM job
       WHERE job_status = 0
@@ -23,6 +24,7 @@
         job_name AS jobName,
         work_year AS workYear,
         department_id AS departmentId,
+        job_need_count AS jobNeedCount,
         department_name AS departmentName
       FROM job
       WHERE job_status = 0
