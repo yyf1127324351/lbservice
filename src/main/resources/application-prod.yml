@@ -1,0 +1,8 @@
+
+spring:
+  lbserviceDataSource:
+    druid:
+      url: jdbc:mysql://192.168.2.16:33306/lbservice?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+      username: hr
+      password: E1opTTYV8QZ9U
+      type: com.alibaba.druid.pool.DruidDataSource
