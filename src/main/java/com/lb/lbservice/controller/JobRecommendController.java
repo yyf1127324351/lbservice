@@ -63,7 +63,7 @@ public class JobRecommendController {
         }
     }
     /**
-     *  获取推荐岗位，及推荐详情
+     *  更新岗位推荐表状态
      * */
     @PostMapping("updateJobRecommend")
     public void updateJobRecommend(@RequestBody JSONObject jsonObject){
