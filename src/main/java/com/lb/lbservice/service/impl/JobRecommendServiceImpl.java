@@ -2,6 +2,7 @@ package com.lb.lbservice.service.impl;
 
 import com.lb.lbservice.dao.JobRecommendMapper;
 import com.lb.lbservice.model.JobRecommendModel;
+import com.lb.lbservice.model.RecommendDetailModel;
 import com.lb.lbservice.service.JobRecommendService;
 import com.lb.lbservice.service.MailService;
 import com.lb.lbservice.utils.BaseResponse;
@@ -35,6 +36,12 @@ public class JobRecommendServiceImpl implements JobRecommendService {
         return new BaseResponse().success();
 
     }
+
+    @Override
+    public RecommendDetailModel getRecommendDetail(RecommendDetailModel recommendDetailModel) {
+        return jobRecommendMapper.getRecommendDetail(recommendDetailModel);
+    }
+
     @Override
     public Boolean updateJobRecommendStatus(HashMap<String,String> map)
     {

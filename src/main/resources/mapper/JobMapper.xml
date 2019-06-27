@@ -29,7 +29,7 @@
     </select>
     <select id="selectCount" resultType="java.lang.Long">
       select count(1)
-      FROM operator_job
+      FROM job
       WHERE job = 0
     </select>
     <select id="getJob" resultType="com.lb.lbservice.model.JobModel">

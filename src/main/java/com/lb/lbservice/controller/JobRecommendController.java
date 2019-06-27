@@ -2,6 +2,7 @@ package com.lb.lbservice.controller;
 
 import com.lb.lbservice.model.ApplicantMsg;
 import com.lb.lbservice.model.JobRecommendModel;
+import com.lb.lbservice.model.RecommendDetailModel;
 import com.lb.lbservice.service.JobRecommendService;
 import com.lb.lbservice.utils.BaseResponse;
 import org.apache.log4j.Logger;
@@ -42,15 +43,16 @@ public class JobRecommendController {
     /**
      *  获取推荐岗位，及推荐详情
      * */
-//    @PostMapping("getRecommendDetail")
-//    public BaseResponse getRecommendDetail(){
-//        try {
-//            return jobRecommendService.getRecommendDetail(jobRecommendModel);
-//        }catch (Exception e){
-//            logger.error("api/v1/jobRecommend/addJobRecommend-exception:",e);
-//            return new BaseResponse().error();
-//        }
-//    }
+    @PostMapping("getRecommendDetail")
+    public BaseResponse getRecommendDetail(@RequestBody RecommendDetailModel recommendDetailModel){
+        try {
+            RecommendDetailModel model = jobRecommendService.getRecommendDetail(recommendDetailModel);
+            return new BaseResponse().success(model);
+        }catch (Exception e){
+            logger.error("api/v1/jobRecommend/getRecommendDetail-exception:",e);
+            return new BaseResponse().error();
+        }
+    }
 
 
 
