@@ -5,6 +5,7 @@ import com.lb.lbservice.model.RecommendDetailModel;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -14,4 +15,6 @@ public interface JobRecommendMapper {
     void  updateJobRecommendStatus(HashMap<String,String> map);
 
     RecommendDetailModel getRecommendDetail(RecommendDetailModel recommendDetailModel);
+
+    void updateJobRecommend(List<JobRecommendModel> list);
 }

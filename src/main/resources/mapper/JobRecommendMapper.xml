@@ -60,4 +60,14 @@
     <update id="updateJobRecommendStatus" parameterType="map">
     update job_recommend_info set status=#{status} where id in (#{id});
   </update>
+
+  <update id="updateJobRecommend">
+    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+      UPDATE job_recommend_info
+      <set>
+        status = ${item.status}
+      </set>
+      where id = ${item.id}
+    </foreach>
+  </update>
 </mapper>

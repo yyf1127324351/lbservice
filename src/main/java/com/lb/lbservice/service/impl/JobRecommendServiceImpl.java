@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class JobRecommendServiceImpl implements JobRecommendService {
@@ -40,6 +41,11 @@ public class JobRecommendServiceImpl implements JobRecommendService {
     @Override
     public RecommendDetailModel getRecommendDetail(RecommendDetailModel recommendDetailModel) {
         return jobRecommendMapper.getRecommendDetail(recommendDetailModel);
+    }
+
+    @Override
+    public void updateJobRecommend(List<JobRecommendModel> list) {
+        jobRecommendMapper.updateJobRecommend(list);
     }
 
     @Override
