@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.lb</groupId>
 	<artifactId>lbservice</artifactId>
-	<version>SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>war</packaging>
 	<name>lbservice</name>
 	<description>Demo project for Spring Boot</description>
