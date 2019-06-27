@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface JobRecommendService {
-    BaseResponse insertJobRecommend(JobRecommendModel jobRecommendModel);
     Boolean  updateJobRecommendStatus(HashMap<String,String> map);
+    BaseResponse insertJobRecommend(JobRecommendModel jobRecommendModel)throws Exception;
 }

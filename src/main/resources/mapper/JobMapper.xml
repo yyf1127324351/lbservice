@@ -13,7 +13,7 @@
         job_salary_max AS jobSalaryMax,
         job_city AS jobCity,
         publish_date AS publishDate
-      FROM operator_job
+      FROM job
       WHERE job_status = 0
     </select>
     <select id="getJobListPage" resultType="com.lb.lbservice.model.JobModel">
