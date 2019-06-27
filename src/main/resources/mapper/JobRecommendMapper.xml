@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lb.lbservice.dao.JobRecommendMapper" >
+
+
+    <insert id="insertJobRecommend">
+      INSERT INTO job_recommend_info (
+        job_id,
+        job_name,
+        referee_name,
+        referee_phone,
+        referee_mail,
+        recommended_name,
+        recommended_phone,
+        recommended_mail,
+        status,
+        valid,
+        create_time
+      ) VALUES (
+        #{jobId},
+        #{jobName},
+        #{refereeName},
+        #{refereePhone},
+        #{refereeMail},
+        #{recommendedName},
+        #{recommendedPhone},
+        #{recommendedMail},
+        #{status},
+        #{valid},
+        #{createTime}
+      );
+
+
+
+
+
+    </insert>
+</mapper>

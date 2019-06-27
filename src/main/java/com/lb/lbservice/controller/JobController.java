@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 岗位controller
+ * */
 @RestController
 @RequestMapping("api/v1/job")
 public class JobController {
