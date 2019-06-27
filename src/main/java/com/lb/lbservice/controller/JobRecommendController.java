@@ -8,6 +8,7 @@ import com.lb.lbservice.model.JobRecommendModel;
 import com.lb.lbservice.model.RecommendDetailModel;
 import com.lb.lbservice.service.JobRecommendService;
 import com.lb.lbservice.utils.BaseResponse;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,8 +72,10 @@ public class JobRecommendController {
         if (StringUtils.isNotBlank(token)){
             if (token.equals(tokens)){
                 JSONArray jsonArray = jsonObject.getJSONArray("data");
-                List<JobRecommendModel> list = JSONObject.parseArray(jsonArray.toJSONString(), JobRecommendModel.class);
-                jobRecommendService.updateJobRecommend(list);
+                if (CollectionUtils.isNotEmpty(jsonArray)){
+                    List<JobRecommendModel> list = JSONObject.parseArray(jsonArray.toJSONString(), JobRecommendModel.class);
+                    jobRecommendService.updateJobRecommend(list);
+                }
             }
         }
     }
