@@ -11,4 +11,6 @@ public interface JobService {
     List<JobModel> getJobListPage(Map<String, Object> param);
 
     Long selectCount(Map<String, Object> param);
+
+    JobModel getJob(JobModel jobModel);
 }

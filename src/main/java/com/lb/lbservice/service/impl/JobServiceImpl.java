@@ -29,4 +29,9 @@ public class JobServiceImpl implements JobService {
     public Long selectCount(Map<String, Object> param) {
         return jobMapper.selectCount(param);
     }
+
+    @Override
+    public JobModel getJob(JobModel jobModel) {
+        return jobMapper.getJob(jobModel);
+    }
 }

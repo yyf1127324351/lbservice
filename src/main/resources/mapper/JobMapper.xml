@@ -8,7 +8,11 @@
         id AS id,
         job_name AS jobName,
         department_id AS departmentId,
-        department_name AS departmentName
+        department_name AS departmentName,
+        job_salary_min AS jobSalaryMin,
+        job_salary_max AS jobSalaryMax,
+        job_city AS jobCity,
+        publish_date AS publishDate
       FROM operator_job
       WHERE job_status = 0
     </select>
@@ -27,5 +31,23 @@
       select count(1)
       FROM operator_job
       WHERE job_status = 0
+    </select>
+    <select id="getJob" resultType="com.lb.lbservice.model.JobModel">
+      SELECT
+        id AS id,
+        job_name AS jobName,
+        department_id AS departmentId,
+        department_name AS departmentName,
+        job_salary_min AS jobSalaryMin,
+        job_salary_max AS jobSalaryMax,
+        job_city AS jobCity,
+        publish_date AS publishDate,
+        job_need_count AS jobNeedCount,
+        job_duty AS jobDuty,
+        job_requirement AS jobRequirement
+      FROM operator_job
+      WHERE job_status = 0
+      AND id = #{}
+
     </select>
 </mapper>

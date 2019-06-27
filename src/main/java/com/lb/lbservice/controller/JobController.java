@@ -6,9 +6,7 @@ import com.lb.lbservice.utils.BaseResponse;
 import com.lb.lbservice.utils.Pager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,12 +25,25 @@ public class JobController {
      * */
     @GetMapping("getJobList")
     public BaseResponse getJobList() {
-        BaseResponse baseResponse = new BaseResponse();
         try {
             List<JobModel> jobList = jobService.getJobList();
             return new BaseResponse().success(jobList);
         }catch (Exception e){
             logger.error("api/v1/job/getJob-exception:",e);
+            return new BaseResponse().error();
+        }
+    }
+
+    /**
+     *  岗位详情
+     * */
+    @PostMapping("getJobDetail")
+    public BaseResponse getJobDetail(@RequestBody JobModel jobModel) {
+        try {
+            JobModel job = jobService.getJob(jobModel);
+            return new BaseResponse().success(job);
+        }catch (Exception e){
+            logger.error("api/v1/job/getJobDetail-exception:",e);
             return new BaseResponse().error();
         }
     }
