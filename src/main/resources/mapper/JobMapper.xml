@@ -47,7 +47,7 @@
         job_requirement AS jobRequirement
       FROM operator_job
       WHERE job_status = 0
-      AND id = #{}
+      AND id = #{id}
 
     </select>
 </mapper>
