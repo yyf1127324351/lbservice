@@ -12,6 +12,7 @@
         job_salary_min AS jobSalaryMin,
         job_salary_max AS jobSalaryMax,
         job_city AS jobCity,
+        work_year AS workYear,
         publish_date AS publishDate
       FROM job
       WHERE job_status = 0
@@ -20,6 +21,7 @@
       SELECT
         id AS id,
         job_name AS jobName,
+        work_year AS workYear,
         department_id AS departmentId,
         department_name AS departmentName
       FROM job
@@ -30,7 +32,7 @@
     <select id="selectCount" resultType="java.lang.Long">
       select count(1)
       FROM job
-      WHERE job = 0
+      WHERE job_status = 0
     </select>
     <select id="getJob" resultType="com.lb.lbservice.model.JobModel">
       SELECT
@@ -40,6 +42,7 @@
         department_name AS departmentName,
         job_salary_min AS jobSalaryMin,
         job_salary_max AS jobSalaryMax,
+        work_year AS workYear,
         job_city AS jobCity,
         publish_date AS publishDate,
         job_need_count AS jobNeedCount,
