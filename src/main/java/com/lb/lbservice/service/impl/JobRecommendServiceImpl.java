@@ -1,6 +1,7 @@
 package com.lb.lbservice.service.impl;
 
 import com.lb.lbservice.dao.JobRecommendMapper;
+import com.lb.lbservice.dto.JobRecommendAndInfo;
 import com.lb.lbservice.model.JobRecommendModel;
 import com.lb.lbservice.service.JobRecommendService;
 import com.lb.lbservice.service.MailService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class JobRecommendServiceImpl implements JobRecommendService {
@@ -61,6 +63,17 @@ public class JobRecommendServiceImpl implements JobRecommendService {
         p.append("<p>");
         p.append("乐贝网络科技有限公司");
         return p.toString();
+    }
+
+    public List<JobRecommendAndInfo> queryRecommendAndInfo(){
+        try {
+            return jobRecommendMapper.queryRecommendAndInfo();
+        }
+        catch (Exception ex)
+        {
+            logger.error(ex.toString());
+            return  null;
+        }
     }
 
 

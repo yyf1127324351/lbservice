@@ -2,11 +2,13 @@ package com.lb.lbservice.service.impl;
 
 import com.lb.lbservice.common.FtpUtil;
 import com.lb.lbservice.controller.JobController;
+import com.lb.lbservice.dao.ApplicationMsgMapper;
 import com.lb.lbservice.dao.JobMapper;
 import com.lb.lbservice.dao.JobRecommendMapper;
 import com.lb.lbservice.model.*;
 import com.lb.lbservice.service.ApplicationMsgService;
 import com.lb.lbservice.utils.BaseResponse;
+import org.apache.catalina.core.ApplicationMapping;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.ksoap2.SoapEnvelope;
@@ -36,6 +38,9 @@ public class ApplicationMsgServiceImpl implements ApplicationMsgService {
     @Autowired
     JobRecommendMapper jobRecommendMapper;
 
+    @Autowired
+    ApplicationMsgMapper applicationMsgMapper;
+
     @Value("${jianlijiexi_username}")
     private String user_name;
 
@@ -61,6 +66,7 @@ public class ApplicationMsgServiceImpl implements ApplicationMsgService {
             }
             applicantMng.setResumeFile(input.getResumeFile());
             uploadResume(applicantMng);//附件上传.
+            applicationMsgMapper.saveApplicantMsg(applicantMng);
         }
         catch (Exception ex)
         {
