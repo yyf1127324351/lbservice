@@ -40,6 +40,22 @@ public class JobRecommendController {
             return new BaseResponse().error();
         }
     }
+
+    /**
+     *  获取推荐岗位，及推荐详情
+     * */
+//    @PostMapping("getRecommendDetail")
+//    public BaseResponse getRecommendDetail(){
+//        try {
+//            return jobRecommendService.getRecommendDetail(jobRecommendModel);
+//        }catch (Exception e){
+//            logger.error("api/v1/jobRecommend/addJobRecommend-exception:",e);
+//            return new BaseResponse().error();
+//        }
+//    }
+
+
+
     @RequestMapping("getHrData")
     public List<JobRecommendAndInfo> getHrData(String token)
     {
