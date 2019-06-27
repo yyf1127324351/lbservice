@@ -19,6 +19,7 @@ public class JobModel {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer jobNeedCount;//岗位需求人数
     private String publishDate;//岗位发布时间
+    private Integer positionId;//岗位ID  对应zhaopin_positionMsg 表id
 
 
     public Integer getId() {
@@ -107,5 +108,13 @@ public class JobModel {
 
     public void setPublishDate(String publishDate) {
         this.publishDate = publishDate;
+    }
+
+    public Integer getPositionId() {
+        return positionId;
+    }
+
+    public void setPositionId(Integer positionId) {
+        this.positionId = positionId;
     }
 }

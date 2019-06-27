@@ -7,3 +7,6 @@ spring:
       username: root
       password: richardsun
       type: com.alibaba.druid.pool.DruidDataSource
+jianlijiexi_username: dTEwMDA0OQ==
+jianlijiexi_pwd: dGVzdDAyMjY=
+

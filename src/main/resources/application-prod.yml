@@ -6,3 +6,5 @@ spring:
       username: hr
       password: E1opTTYV8QZ9U
       type: com.alibaba.druid.pool.DruidDataSource
+jianlijiexi_username: dTEwMDIyMQ==
+jianlijiexi_pwd: c3psYjIwMTkwNjE0
