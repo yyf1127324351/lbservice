@@ -8,12 +8,12 @@
         	office_area,office_area_name,work_type,work_type_name,send_offer,applicant_stage,applicant_status,salary_range,salary_range_name,
         	working_years,working_years_name,applicant_channel,resume_id,added_time,creater,valid,graduates,student,league,intern,scholarship,
         	profession,currentwage,hopewage,recommenduser,business,birthDate,marrayStatus,politicalStatus,account,reportTime,functions,
-        	beforeBusiness,address,work_skill,project_skill,education_skill,other_skill,jobStatus,system_from,applicant_type,apply_id)
+        	beforeBusiness,address,work_skill,project_skill,education_skill,other_skill,jobStatus,system_from,applicant_type,apply_id,fileurl,filename)
 		VALUES (#{name},#{mobile},#{email},#{job},#{sex},#{note},#{age},#{college},#{education},#{educationName},#{beforeCompany},#{beforeJob},
 			#{officeArea},#{officeAreaName},#{workType},#{workTypeName},#{sendOffer},#{applicantStage},#{applicantStatus},#{salaryRange},
 			#{salaryRangeName},#{workingYears},#{workingYearsName},#{applicantChannel},#{resumeId},now(),#{creater},#{valid},#{graduates},
 			#{student},#{league},#{intern},#{scholarship},#{profession},#{currentWage},#{hopeWage},#{recommendUserId},#{business},#{birthDate},
 			#{marrayStatus},#{politicalStatus},#{account},#{reportTime},#{functions},#{beforeBusiness},#{address},#{workSkill},#{projectSkill},
-			#{educationSkill},#{otherSkill},#{jobStatus},#{systemFrom},#{applicantType},#{applyId})
+			#{educationSkill},#{otherSkill},#{jobStatus},#{systemFrom},#{applicantType},#{applyId},#{fileUrl},#{fileName})
     </insert>
 </mapper>

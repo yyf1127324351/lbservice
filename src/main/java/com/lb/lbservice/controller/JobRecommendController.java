@@ -34,7 +34,6 @@ public class JobRecommendController {
     @Autowired
     private JobRecommendService jobRecommendService;
 
-    private String hr_token="abc";
 
     /**
      *  新增岗位推荐记录
@@ -89,7 +88,7 @@ public class JobRecommendController {
     @RequestMapping("getHrData")
     public List<JobRecommendAndInfo> getHrData(String token)
     {
-       if(!token.equals(hr_token))
+       if(!token.equals(tokens))
            return  null;
        else
            return jobRecommendService.queryRecommendAndInfo();
