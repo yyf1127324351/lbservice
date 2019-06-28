@@ -3,7 +3,6 @@ package com.lb.lbservice.controller;
 import com.lb.lbservice.dto.JobRecommendAndInfo;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lb.lbservice.model.ApplicantMsg;
 import com.lb.lbservice.model.JobRecommendModel;
 import com.lb.lbservice.model.RecommendDetailModel;
 import com.lb.lbservice.service.JobRecommendService;
@@ -34,7 +33,6 @@ public class JobRecommendController {
     @Autowired
     private JobRecommendService jobRecommendService;
 
-    private String hr_token="abc";
 
     /**
      *  新增岗位推荐记录
@@ -81,7 +79,7 @@ public class JobRecommendController {
     @RequestMapping("getHrData")
     public List<JobRecommendAndInfo> getHrData(String token)
     {
-       if(!token.equals(hr_token))
+       if(!token.equals(tokens))
            return  null;
        else
            return jobRecommendService.queryRecommendAndInfo();
