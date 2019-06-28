@@ -1,7 +1,5 @@
 package com.lb.lbservice.utils;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 public class BaseResponse<T> {
 
 
@@ -9,7 +7,7 @@ public class BaseResponse<T> {
 
     private String message;
     // 自定义返回数据
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+//    @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
     public BaseResponse() {

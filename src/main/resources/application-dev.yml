@@ -24,6 +24,8 @@ spring:
     from: hr@lebbay.com
     transport:
       protocol: smtp
+logging:
+    level: info
 
 #简历解析账号密码
 jianlijiexi_username: dTEwMDA0OQ==
