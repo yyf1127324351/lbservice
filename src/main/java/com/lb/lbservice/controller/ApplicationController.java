@@ -3,7 +3,6 @@ package com.lb.lbservice.controller;
 import com.lb.lbservice.model.ApplicantMsg;
 import com.lb.lbservice.service.ApplicationMsgService;
 import com.lb.lbservice.utils.BaseResponse;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,9 +1,8 @@
 package com.lb.lbservice.controller;
 
-import com.lb.lbservice.dto.JobRecommendAndInfo;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lb.lbservice.model.ApplicantMsg;
+import com.lb.lbservice.dto.JobRecommendAndInfo;
 import com.lb.lbservice.model.JobRecommendModel;
 import com.lb.lbservice.model.RecommendDetailModel;
 import com.lb.lbservice.service.JobRecommendService;

@@ -61,6 +61,10 @@
         <appender-ref ref="infoAppender"/>
     </logger>
 
+    <logger name="com.lb.lbservice.dao">
+        <level value="debug"></level>
+    </logger>
+
     <root level="${logLevel}">
         <appender-ref ref="CONSOLE"/>
     </root>

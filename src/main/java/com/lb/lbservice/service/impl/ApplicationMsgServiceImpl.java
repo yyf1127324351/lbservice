@@ -1,14 +1,11 @@
 package com.lb.lbservice.service.impl;
 
 import com.lb.lbservice.common.FtpUtil;
-import com.lb.lbservice.controller.JobController;
 import com.lb.lbservice.dao.ApplicationMsgMapper;
-import com.lb.lbservice.dao.JobMapper;
 import com.lb.lbservice.dao.JobRecommendMapper;
 import com.lb.lbservice.model.*;
 import com.lb.lbservice.service.ApplicationMsgService;
 import com.lb.lbservice.utils.BaseResponse;
-import org.apache.catalina.core.ApplicationMapping;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.ksoap2.SoapEnvelope;
@@ -22,15 +19,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-import javax.swing.text.DateFormatter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class ApplicationMsgServiceImpl implements ApplicationMsgService {
