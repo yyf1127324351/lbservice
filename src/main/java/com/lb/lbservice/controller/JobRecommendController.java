@@ -55,13 +55,19 @@ public class JobRecommendController {
      * */
     @PostMapping("getRecommendDetail")
     public BaseResponse getRecommendDetail(@RequestBody RecommendDetailModel recommendDetailModel){
-        try {
-            RecommendDetailModel model = jobRecommendService.getRecommendDetail(recommendDetailModel);
-            return new BaseResponse().success(model);
-        }catch (Exception e){
-            logger.error("api/v1/jobRecommend/getRecommendDetail-exception:",e);
-            return new BaseResponse().error();
+        if (null != recommendDetailModel && null != recommendDetailModel.getJobRecommendInfoId()){
+            try {
+                RecommendDetailModel model = jobRecommendService.getRecommendDetail(recommendDetailModel);
+                return new BaseResponse().success(model);
+            }catch (Exception e){
+                logger.error("api/v1/jobRecommend/getRecommendDetail-exception:",e);
+                return new BaseResponse().error();
+            }
+        }else {
+            return new BaseResponse().paramEerror("参数错误！");
         }
+
+
     }
     /**
      *  更新岗位推荐表状态

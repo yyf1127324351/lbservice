@@ -72,7 +72,7 @@
       <set>
         status = ${item.status}
       </set>
-      where id = ${item.id}
+      where id = ${item.id} AND valid = 1
     </foreach>
   </update>
 </mapper>
